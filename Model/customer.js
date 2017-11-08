@@ -1,10 +1,10 @@
 var mongoose = require('mongoose'); 
 
-var {Person} = require('./person'); 
+var {Company} = require('./company'); 
 
 var Customer = mongoose.model('Customer', {
-    Person,
-    name: {
+    Company,
+    companyName: {
         type: String, 
         required: true, 
         trim: true,
