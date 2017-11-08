@@ -7,6 +7,12 @@ var Products = mongoose.model('Products', {
         required: true, 
         trim: true,
         minlength: 1
+    }, 
+    price: {
+        type: Number, 
+        required: true, 
+        min: 1
+        
     }
 }); 
 module.exports = {Products};
