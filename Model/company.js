@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var Person = { 
+var Company = { 
     name: {
         type: String, 
         required: true, 
@@ -9,4 +9,4 @@ var Person = {
     }
 }
 
-module.exports = {Person}; 
+module.exports = {Company}; 
