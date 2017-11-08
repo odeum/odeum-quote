@@ -9,5 +9,6 @@ app.use(bodyParser.json());
 
 
 app.listen(port, () => {
-  console.log(`Server is running ${port} `);
+  console.log(`the server is running ${port} `);
 }); 
+
