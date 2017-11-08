@@ -1,11 +1,16 @@
-
 var express = require("express");
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var router = express.Router();
 
-module.exports = router; 
+var {Products} = require('../Model/products')
 
-router.get('/products', () => {
-    
+module.exports = router;
+
+router.get('/products', (req, res) => {
+    Products.find().then((products) => {
+        res.send({ products });
+    }, (e) => {
+        res.status(400).send(e);
+    })
 })
