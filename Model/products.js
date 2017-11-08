@@ -11,8 +11,13 @@ var Products = mongoose.model('Products', {
     price: {
         type: Number, 
         required: true, 
-        min: 1
-        
+        min: 1 
+    }, 
+    subscription: {
+        type: String,
+        required: true, 
+        trim: true,
+        enum: ['onetime','hourly','monthly','quarterly', 'yearly'] 
     }
 }); 
 module.exports = {Products};
