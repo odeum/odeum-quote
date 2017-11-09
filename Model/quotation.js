@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var Quotation = mongoose.model('Quotation', {
+var QuotationSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
@@ -15,5 +15,7 @@ var Quotation = mongoose.model('Quotation', {
         required: true
     }
 });
+
+var Quotation = mongoose.model('Quotation', Quotation, 'Quotation'); 
 
 module.exports = {Quotation};
