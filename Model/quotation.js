@@ -9,6 +9,10 @@ var Quotation = mongoose.model('Quotation', {
     },
     pdf: {
         path: String
+    },
+    totalPrice: {
+        type: Number,
+        required: true
     }
 });
 

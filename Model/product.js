@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var Product = mongoose.model('Product',{
+var Product = mongoose.model('Product', {
     name: {
         type: String, 
         required: true, 
@@ -31,8 +31,10 @@ var Product = mongoose.model('Product',{
     discount: {
         type: Number 
     },
-    total: {
-        type: Number
+
+    totalPrice: {
+        type: Number,
+        required: true
     }
 }, 'product'); 
 
