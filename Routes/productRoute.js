@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var router = express.Router();
 
-var {Product} = require('../Model/products')
+var {Product} = require('../Model/product')
 
 module.exports = router;
 
@@ -16,7 +16,6 @@ router.get('/products', (req, res) => {
 }); 
 
 router.post('/post', (req, res) => {
-    //console.log(req.body)
     var product = new Product(req.body);
     product.save().then((doc) => {
       res.send(doc)
