@@ -30,6 +30,10 @@ var Product = mongoose.model('Product', {
     }, 
     discount: {
         type: Number 
+    },
+    totalPrice: {
+        type: Number,
+        required: true
     }
 }); 
 module.exports = {Product};
