@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var Product = mongoose.model('Products', {
+var Product = mongoose.model('Product',{
     name: {
         type: String, 
         required: true, 
@@ -30,6 +30,10 @@ var Product = mongoose.model('Products', {
     }, 
     discount: {
         type: Number 
+    },
+    total: {
+        type: Number
     }
-}); 
+}, 'product'); 
+
 module.exports = {Product};
