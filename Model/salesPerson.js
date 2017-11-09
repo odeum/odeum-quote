@@ -31,4 +31,6 @@ var SalesPerson = mongoose.model('SalesPerson', {
         trim: true,
         minlength: 1
     }
-}); 
+});
+
+module.exports = {SalesPerson};

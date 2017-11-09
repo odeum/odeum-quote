@@ -31,4 +31,6 @@ var Customer = mongoose.model('Customer', {
         trim: true,
         minlength: 1
     }
-}); 
+});
+
+module.exports = {Customer};
