@@ -31,7 +31,6 @@ var ProductSchema = mongoose.Schema({
     discount: {
         type: Number 
     },
-
     totalPrice: {
         type: Number,
         required: true
