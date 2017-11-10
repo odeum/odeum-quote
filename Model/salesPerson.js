@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var SalesPerson = mongoose.model('SalesPerson', {
+var SalesPersonSchema = mongoose.Schema({
     companyName: {
         type: String, 
         required: true, 
@@ -31,4 +31,8 @@ var SalesPerson = mongoose.model('SalesPerson', {
         trim: true,
         minlength: 1
     }
-}); 
+});
+
+var SalesPerson = mongoose.model('SalesPerson', SalesPersonSchema, 'SalesPerson');
+
+module.exports = {SalesPerson};

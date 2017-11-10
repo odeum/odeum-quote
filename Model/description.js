@@ -1,6 +1,5 @@
-var mongoose = require('mongoose');
 
-var Description = mongoose.model('description', {
+var DescriptionSchema = {
     title: {
         type: String,
         required: true,
@@ -11,6 +10,8 @@ var Description = mongoose.model('description', {
         required: true,
         trim: true
     }
-});
+};
 
-module.exports = {Description};
+//var Description = mongoose.model('description', DescriptionSchema, 'description');
+
+module.exports = {DescriptionSchema};

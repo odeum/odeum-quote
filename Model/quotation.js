@@ -1,6 +1,8 @@
 var mongoose = require('mongoose'); 
 
-var Quotation = mongoose.model('Quotation', {
+var DescriptionSchema = require('./description');
+
+var QuotationSchema = mongoose.Schema({
     status: {
         type: String,
         required: true,
@@ -9,7 +11,16 @@ var Quotation = mongoose.model('Quotation', {
     },
     pdf: {
         path: String
+    },
+    totalPrice: {
+        type: Number,
+        required: true
+    },
+    description: {
+        DescriptionSchema
     }
 });
+
+var Quotation = mongoose.model('Quotation', QuotationSchema, 'Quotation'); 
 
 module.exports = {Quotation};
