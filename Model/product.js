@@ -31,5 +31,5 @@ var Product = mongoose.model('Product', {
     discount: {
         type: Number 
     }
-}); 
+}, 'product'); 
 module.exports = {Product};
