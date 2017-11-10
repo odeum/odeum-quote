@@ -1,6 +1,6 @@
 var mongoose = require('mongoose'); 
 
-var DescriptionSchema = require('./description');
+var {DescriptionSchema} = require('./description');
 
 var QuotationSchema = mongoose.Schema({
     status: {
@@ -16,9 +16,11 @@ var QuotationSchema = mongoose.Schema({
         type: Number,
         required: true
     },
-    description: {
+    description: [
         DescriptionSchema
-    }
+    ]
+       
+    
 });
 
 var Quotation = mongoose.model('Quotation', QuotationSchema, 'Quotation'); 
