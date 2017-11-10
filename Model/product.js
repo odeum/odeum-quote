@@ -35,5 +35,7 @@ var ProductSchema = mongoose.Schema({
         type: Number,
         required: true
     }
-}, 'product'); 
+}); 
+
+var Product = mongoose.model('Product', ProductSchema, 'product');
 module.exports = {Product};
