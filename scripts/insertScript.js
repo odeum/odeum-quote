@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
-var {Product} = require('../Model/product')
+var {Product} = require('../Model/product');
 var { mongoose } = require('../MongoDb/connection');
 
 
