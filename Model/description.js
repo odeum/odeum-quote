@@ -1,4 +1,3 @@
-
 var mongoose = require('mongoose'); 
 var Description = mongoose.Schema({
     title: {
@@ -12,6 +11,5 @@ var Description = mongoose.Schema({
         trim: true
     }
 });
-
 
 module.exports = {Description};
