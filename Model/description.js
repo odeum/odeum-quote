@@ -1,5 +1,5 @@
-var mongoose = require('mongoose');
 
+var mongoose = require('mongoose'); 
 var Description = mongoose.Schema({
     title: {
         type: String,
@@ -13,6 +13,5 @@ var Description = mongoose.Schema({
     }
 });
 
-//var Description = mongoose.model('description', DescriptionSchema, 'description');
 
 module.exports = {Description};

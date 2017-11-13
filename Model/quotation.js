@@ -1,6 +1,5 @@
 var mongoose = require('mongoose'); 
-
-var Description = require('./description');
+var {Description} = require('./description');
 
 var QuotationSchema = mongoose.Schema({
     status: {
