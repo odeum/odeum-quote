@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 10000"
+    "start": "set NODE_ENV=quoteDB && node app.js" ,
+    "test": "set NODE_ENV=test && mocha --timeout 10000"
   },
   "author": "",
   "license": "ISC",
