@@ -9,7 +9,8 @@ module.exports = router;
 
 router.get('/products', (req, res) => {
     Product.find().then((product) => {
-        res.send({ product });
+        
+        res.send({product});
     }, (e) => {
         res.status(400).send(e);
     });
