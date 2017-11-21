@@ -3,7 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
 var { mongoose } = require('./MongoDb/connection');
-var productRoute = require('./Routes/productRoute');
+var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 
 
@@ -29,8 +29,8 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/quotation/', quotationRoute);
-app.use('/product/', productRoute);
+app.use('/api/quotation/', quotationRoute);
+app.use('/api/product/', productRoute);
 
 
 app.listen(port, () => {
