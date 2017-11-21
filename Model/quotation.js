@@ -2,6 +2,18 @@ var mongoose = require('mongoose');
 var {Description} = require('./description');
 
 var QuotationSchema = mongoose.Schema({
+    salesPersonID: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
+    },
+    customerID: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
+    },
+    productID: {
+        type: mongoose.Schema.Types.ObjectId,
+        require: true
+    },
     status: {
         type: String,
         required: true,
