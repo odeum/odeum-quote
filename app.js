@@ -5,10 +5,14 @@ var cors = require('cors')
 var { mongoose } = require('./MongoDb/connection');
 var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
+var pdfRoute = require('./Routes/pdfRouter')
 
 
 const port = 8080;
 app.use(bodyParser.json());
+
+
+app.use(bodyParser.text({ type: 'text/html'})); 
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -31,7 +35,7 @@ app.use(function (req, res, next) {
 
 app.use('/api/quotation/', quotationRoute);
 app.use('/api/product/', productRoute);
-
+app.use('/api/pdf/', pdfRoute);
 
 app.listen(port, () => {
   console.log(`the server is running ${port} `);
