@@ -1,19 +1,17 @@
-var mongoose = require('mongoose'); 
-var {Description} = require('./description');
+var mongoose = require('mongoose');
+var { Description } = require('./description');
+var { Product } = require('./quoteProduct');
 
 var QuotationSchema = mongoose.Schema({
     salesPersonID: {
         type: mongoose.Schema.Types.ObjectId,
-        require: true
+       // require: true
     },
     customerID: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: String,
         require: true
     },
-    productID: {
-        type: mongoose.Schema.Types.ObjectId,
-        require: true
-    },
+    product: [Product],
     status: {
         type: String,
         required: true,
@@ -30,6 +28,6 @@ var QuotationSchema = mongoose.Schema({
     description: [Description]
 });
 
-var Quotation = mongoose.model('Quotation', QuotationSchema, 'Quotation'); 
+var Quotation = mongoose.model('Quotation', QuotationSchema, 'Quotation');
 
-module.exports = {Quotation};
+module.exports = { Quotation };

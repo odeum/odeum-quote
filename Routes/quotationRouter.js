@@ -20,6 +20,7 @@ router.post('/post', (req, res) => {
     quotation.save().then((doc) => {
       res.send(doc);
     }, (e) => {
+      console.log(req.body)
       res.status(400).send(e);
     });
   });

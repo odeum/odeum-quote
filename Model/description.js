@@ -2,12 +2,12 @@ var mongoose = require('mongoose');
 var Description = mongoose.Schema({
     title: {
         type: String,
-        required: true,
+      //  required: true,
         trim: true
     },
     description: {
         type: String,
-        required: true,
+        //required: true,
         trim: true
     }
 });
