@@ -25,12 +25,7 @@ var CustomerSchema = mongoose.Schema({
         trim: true,
         minlength: 1
     },
-    address: {
-        type: String, 
-        required: true, 
-        trim: true,
-        minlength: 1
-    }
+    address: [Address]
 });
 
 var Customer = mongoose.model('Customer', CustomerSchema, 'customers');

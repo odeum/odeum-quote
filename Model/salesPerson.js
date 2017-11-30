@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'); 
+var {Address} = require('./address');
 
 var SalesPersonSchema = mongoose.Schema({
     companyName: {
@@ -25,12 +26,7 @@ var SalesPersonSchema = mongoose.Schema({
         trim: true,
         minlength: 1
     },
-    address: {
-        type: String, 
-        required: true, 
-        trim: true,
-        minlength: 1
-    }
+    address: [Address]
 });
 
 var SalesPerson = mongoose.model('SalesPerson', SalesPersonSchema, 'SalesPerson');
