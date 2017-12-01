@@ -18,6 +18,8 @@
     "html-pdf": "^2.2.0",
     "mocha": "^4.0.1",
     "mongodb": "^2.2.33",
-    "mongoose": "^4.13.0"
+    "mongoose": "^4.13.0",
+    "nodemailer": "^4.4.0",
+    "nodemailer-smtp-transport": "^2.7.4"
   }
 }
