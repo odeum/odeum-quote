@@ -18,6 +18,7 @@ router.get('/quotations', (req, res) => {
 router.post('/post', (req, res) => {
     var quotation = new Quotation(req.body);
     quotation.save().then((doc) => {
+        console.log('good')
       res.send(doc);
     }, (e) => {
       console.log(req.body)
