@@ -19,7 +19,11 @@ var QuotationSchema = mongoose.Schema({
         enum: ['Draft', 'Prospect', 'Lost', 'Won', 'Production', 'Delivered', 'Invoiced', 'Operation', 'Operation stopped',]
     },
     pdf: {
-        path: String
+        type: String
+    },
+    date:{
+        type: String, 
+        required: true
     },
     totalPrice: {
         type: Number,
