@@ -19,6 +19,8 @@ var config = require('../config')
 
 
 const mailer = require('nodemailer');
+module.exports = function sendMail(fileName, customerEmail){
+    console.log('testes')
     var smtpTransport = mailer.createTransport({
         service: "Gmail",
         auth: {
@@ -29,14 +31,14 @@ const mailer = require('nodemailer');
 
     var mail = {
         from: config.mail.mail,
-        to: config.mail.mail,
+        to: customerEmail,
         subject: "Send Email Using Node.js",
         text: "Node.js New world for me",
         html: "<b>Node.js New world for me</b>",
         attachments: [
              {   // stream as an attachment
-                filename: 'kuku.pdf',
-                path: '../pdfs/'
+                filename: 'kuku',
+                path: `./pdfs/${fileName}.pdf`
             }
         ]
     }
@@ -50,4 +52,5 @@ const mailer = require('nodemailer');
     
         smtpTransport.close();
     });
+}
 

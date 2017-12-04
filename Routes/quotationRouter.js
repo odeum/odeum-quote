@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require('body-parser');
 var jsonParser = bodyParser.json();
 var router = express.Router();
-
 var {Quotation} = require('../Model/quotation');
 
 module.exports = router;
@@ -20,7 +19,6 @@ router.post('/post', (req, res) => {
     quotation.save().then((doc) => {
       res.send(doc);
     }, (e) => {
-      console.log(req.body)
       res.status(400).send(e);
     });
   });
