@@ -1,4 +1,3 @@
-var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
@@ -7,7 +6,6 @@ var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
-
 
 const port = 8080;
 app.use(bodyParser.json());
@@ -29,7 +27,6 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-
 
 app.use('/api/quotation/', quotationRoute);
 app.use('/api/product/', productRoute);
