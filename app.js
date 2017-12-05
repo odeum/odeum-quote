@@ -12,7 +12,7 @@ const port = 8080;
 app.use(bodyParser.json());
 
 
-app.use(bodyParser.text({ type: 'text/html'})); 
+app.use(bodyParser.raw({ type: 'application/javascript'})); 
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
