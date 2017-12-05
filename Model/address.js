@@ -17,4 +17,4 @@ var Address = mongoose.Schema({
     }
 });
 
-module.exports = {Description};
+module.exports = {Address};

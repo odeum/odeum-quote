@@ -5,6 +5,7 @@ var cors = require('cors')
 var { mongoose } = require('./MongoDb/connection');
 var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
+var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
 
 
@@ -22,7 +23,7 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', '*');
 
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With');
+  res.setHeader('Access-Control-Allow-Headers', '*');
 
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
@@ -36,6 +37,7 @@ app.use(function (req, res, next) {
 app.use('/api/quotation/', quotationRoute);
 app.use('/api/product/', productRoute);
 app.use('/api/pdf/', pdfRoute);
+app.use('/api/salesperson', salespersonRoute)
 
 app.listen(port, () => {
   console.log(`the server is running ${port} `);
