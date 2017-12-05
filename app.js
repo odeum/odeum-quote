@@ -12,9 +12,6 @@ var pdfRoute = require('./Routes/pdfRouter')
 const port = 8080;
 app.use(bodyParser.json());
 
-
-app.use(bodyParser.raw({ type: 'application/javascript'})); 
-
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -23,7 +20,7 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Methods', '*');
 
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', '*');
+  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)

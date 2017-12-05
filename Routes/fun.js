@@ -1,4 +1,4 @@
-global.window = {document: {createElementNS: () => {return {}} }};
+/*global.window = {document: {createElementNS: () => {return {}} }};
 global.navigator = {};
 global.btoa = () => {};
 
@@ -13,8 +13,8 @@ var doc = new jsPDF();
 doc.text("Hello", 10, 10);
 var data = doc.output();
 
-fs.writeFileSync("../pdfs", "test.pdf", data);
+fs.writeFileSync("../pdfs/tessdfsdft.pdf", data);
 
 delete global.window;
 delete global.navigator;
-delete global.btoa;
+delete global.btoa;*/
