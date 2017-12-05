@@ -9,7 +9,7 @@ module.exports = router;
 
 router.get('/get', (req, res) => {
     //var id = ''
-    SalesPerson.findOne({'contactPerson': 'Christian broberg'}).then((salesperson) => {
+    SalesPerson.findOne({'contactPerson': 'Christian Broberg'}).then((salesperson) => {
         res.send({salesperson});
     }, (e) => {
         res.status(400).send(e);
