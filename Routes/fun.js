@@ -17,4 +17,4 @@ fs.writeFileSync("../pdfs/tessdfsdft.pdf", data);
 
 delete global.window;
 delete global.navigator;
-delete global.btoa;*/
+delete global.btoa;
