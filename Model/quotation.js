@@ -11,6 +11,11 @@ var QuotationSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    customerName:{
+        type: String, 
+        require: true,
+        trim: true
+    },
     product: [Product],
     status: {
         type: String,
