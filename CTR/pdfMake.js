@@ -3,15 +3,15 @@ var fs = require('fs');
 var image = require('../img/data')
 var fonts = {
     Roboto: {
-        normal: '../fonts/Roboto-Regular.ttf',
-        bold: '../fonts/Roboto-Medium.ttf',
-        italics: '../fonts/Roboto-Italic.ttf',
-        bolditalics: '../fonts/Roboto-Italic.ttf'
+        normal: './fonts/Roboto-Regular.ttf',
+        bold: './fonts/Roboto-Medium.ttf',
+        italics: './fonts/Roboto-Italic.ttf',
+        bolditalics: './fonts/Roboto-Italic.ttf'
     }
 };
 var printer = new pdfMake(fonts);
 
-createPdf = () => {
+createPdf = (date) => {
    
     console.log('pdfmake is trigged')
     /*printer.tableLayouts = {
@@ -54,8 +54,6 @@ createPdf = () => {
             ]
         },
     
-        
-    
         content: [
             {
                 layout: 'lightHorizontalLines', // optional
@@ -69,7 +67,7 @@ createPdf = () => {
                     body: [
                         ['First', 'Second', 'Third', 'The last one'],
                         ['Value 1', 'Value5555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555 2', 'Value 3', 'Value 4'],
-                        ['val 1', 'Val 2', 'Val 3', 'Val 4']
+                        ['val 1', `${date}`, 'Vaggffgfgfgfgfgfgfgl 3', 'Val 4']
                     ]
                 }
             }
