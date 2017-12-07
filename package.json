@@ -26,6 +26,7 @@
     "nodemailer-smtp-transport": "^2.7.4",
     "path": "^0.12.7",
     "pdfkit": "^0.8.3",
+    "pdfmake": "^0.1.34",
     "voilab-pdf-table": "^0.4.0"
   }
 }
