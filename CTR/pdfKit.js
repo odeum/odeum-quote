@@ -1,4 +1,5 @@
-PDFDocument = require('pdfkit')
+PDFDocument = require('pdfkit');
+PdfTable = require('voilab-pdf-table');
 var fs = require('fs');
 
 function formatDate(date) {
@@ -19,6 +20,11 @@ function formatDate(date) {
 }
 
 const doc = new PDFDocument
+table = new PdfTable(doc, {
+  bottomMargin: 30,
+  padding: 10
+});
+
 doc.pipe(fs.createWriteStream('./Tilbud.pdf'))
 
 //The logo
@@ -71,7 +77,49 @@ doc.text('Produkt oversigt', 70, 110)
 doc.fontSize(12)
 
 //The table
-doc.text('The table is supposed to be here', 70, 140)
+doc.text('', 70, 160)
+
+table
+  // add some plugins (here, a 'fit-to-width' for a column)
+  .addPlugin(new (require('voilab-pdf-table/plugins/fitcolumn'))({
+    column: 'description'
+  }))
+  // set defaults to your columns
+  .setColumnsDefaults({
+    headerBorder: 'B',
+    align: 'left',
+    border: 'B',
+    padding: [5, 5, 0, 0]
+  })
+  // add table columns
+  .addColumns([
+    {
+      id: 'product',
+      header: 'Produkt',
+      width: 120
+    },
+    {
+      id: 'description',
+      header: 'Beskrivelse af produkt'
+    },
+    {
+      id: 'price',
+      header: 'Pris',
+      width: 40,
+      align: 'right'
+    }
+  ])
+  // add events (here, we draw headers on each new page)
+  .onPageAdded(function (tb) {
+    tb.addHeader();
+  });
+
+// draw content, by passing data to the addBody method
+table.addBody([
+  { product: 'Product sthsrth sgr seths', description: 'agrfaerfarggfsgsgvsgafadyfdthfaarfgawgrsegrsegreagrsergsergse', price: 20.10 },
+  { product: 'Product 2', description: 4, price: 4.00 },
+  { product: 'Product 3', description: 5, price: 17.85 }
+]);
 
 //The footer
 doc.fontSize(7.5);
