@@ -105,7 +105,7 @@ table
     {
       id: 'price',
       header: 'Pris',
-      width: 40,
+      width: 60,
       align: 'right'
     }
   ])
