@@ -28,9 +28,9 @@ table = new PdfTable(doc, {
 doc.pipe(fs.createWriteStream('./Tilbud.pdf'))
 
 //The logo
-doc.image('../img/logo.png', 427, doc.page.height - 800, {
-  fit: [130, 130]
-});
+// doc.image('../img/logo.png', 427, doc.page.height - 800, {
+//   fit: [130, 130]
+// });
 
 //The date
 doc.text(formatDate(), 427, 150)
@@ -65,9 +65,9 @@ doc.text(footer, 60, 710);
 doc.addPage()
 
 //The logo
-doc.image('../img/logo.png', 427, doc.page.height - 800, {
-  fit: [130, 130]
-});
+// doc.image('../img/logo.png', 427, doc.page.height - 800, {
+//   fit: [130, 130]
+// });
 
 //The title of the table
 doc.fontSize(20)

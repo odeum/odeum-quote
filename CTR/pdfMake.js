@@ -3,19 +3,46 @@ var fs = require('fs');
 var image = require('../img/data')
 var fonts = {
     Roboto: {
-        normal: '../fonts/Roboto-Regular.ttf',
-        bold: '../fonts/Roboto-Medium.ttf',
-        italics: '../fonts/Roboto-Italic.ttf',
-        bolditalics: '../fonts/Roboto-Italic.ttf'
+        normal: './fonts/Roboto-Regular.ttf',
+        bold: './fonts/Roboto-Medium.ttf',
+        italics: './fonts/Roboto-Italic.ttf',
+        bolditalics: './fonts/Roboto-Italic.ttf'
     }
 };
 
+const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
 var printer = new pdfMake(fonts);
 
-createPdf = (date) => {
-
-    console.log('pdfmake is trigged')
-
+createPdf = (date, companyName, customerFirstName, customerLastName, customerAdress,
+    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) => {
+    var title
+    var description
+    description.map((item) => {
+        return (title = item.title,
+            description = item.description
+        )
+    })
+    var bodyData = []
+    var productName
+    var productDescription
+    var productPrice
+    bodyDataHeader =  [{ text: 'Produkt', bold: true }, { text: 'Beskrivelse af produkt', bold: true }, { text: 'Pris', alignment: 'right', bold: true }];
+    bodyData.push(bodyDataHeader);
+    products.map((item) => {
+        var dataRow= [];
+        var newPrice = numberWithCommas(item.price)
+        console.log(item)
+        dataRow.push(item.name);
+        dataRow.push(item.description);
+        dataRow.push({text: newPrice, alignment: 'right'});
+        bodyData.push(dataRow)
+    })
+    //bodyData.push(['Samlet pris', '', ({text: totalPrice, alignment: 'right'})])
+    console.log(bodyData)
+    
     var pdfStyle = {
         header: {
             // you'll most often use dataURI images on the browser side
@@ -33,22 +60,24 @@ createPdf = (date) => {
             ]
         },
 
+
+
         content: [
-            { text: 'Virksomhed', margin: [20, 30, 0, 0] },
-            { text: 'Kontaktperson', margin: [20, 0, 0, 0] },
-            { text: 'Email', margin: [20, 0, 0, 0] },
-            { text: 'Telefon', margin: [20, 0, 0, 0] },
+            { text: `${companyName}`, margin: [20, 30, 0, 0] },
+            { text: `${customerFirstName}` + `${customerLastName}`, margin: [20, 0, 0, 0] },
+            { text: `${customerAdress}`, margin: [20, 0, 0, 0] },
+            { text: `${customerZip}` + `${customerCity}`, margin: [20, 0, 0, 0] },
 
-            { text: `Aalborg, 12/07/2017`, alignment: 'right' },
+            { text: `Aalborg, ${date}`, alignment: 'right' },
 
-            { text: 'Titel på tilbud', fontSize: 20, margin: [20, 80, 0, 10], bold: true },
-            { text: 'The domestic cat[1][5] (Felis silvestris catus or Felis catus) is a small, typically furry, carnivorous mammal. They are often called house cats when kept as indoor pets or simply cats when there is no need to distinguish them from other felids and felines.', margin: [20, 0, 0, 20] },
+            { text: `${title}`, fontSize: 20, margin: [20, 80, 0, 10], bold: true },
+            { text: `${description}`, margin: [20, 0, 0, 20] },
 
             { text: 'Med venlig hilsen', absolutePosition: { x: 65, y: 645 } },
-            { text: 'Webhouse ApS', absolutePosition: { x: 65, y: 660 }, bold: true },
-            { text: 'Christian Broberg', absolutePosition: { x: 65, y: 675 }, bold: true },
-            { text: 'Kong Christians Alle 37', absolutePosition: { x: 65, y: 690 } },
-            { text: '9000 Aalborg', absolutePosition: { x: 65, y: 705 }, pageBreak: 'after' },
+            { text: `${salesPersonName}`, absolutePosition: { x: 65, y: 660 }, bold: true },
+            { text: `${companyContactName}`, absolutePosition: { x: 65, y: 675 }, bold: true },
+            { text: `${companyEmail}`, absolutePosition: { x: 65, y: 690 } },
+            { text: `${companyPhone}`, absolutePosition: { x: 65, y: 705 }, pageBreak: 'after' },
 
             { text: 'Produkt oversigt', fontSize: 20, margin: [0, 80, 0, 20], bold: true },
 
@@ -62,10 +91,8 @@ createPdf = (date) => {
                     headerRows: 1,
                     widths: ['*', '*', '*'],
 
-                    body: [
-                        [{ text: 'Produkt', bold: true }, { text: 'Beskrivelse af produkt', bold: true }, { text: 'Pris', alignment: 'right', bold: true }],
-                        ['Value 1', 'Value 2', { text: 'Value 3', alignment: 'right' }]
-                    ]
+                    body: bodyData
+
                 },
                 styles: {
                     tableExample: {
@@ -83,5 +110,4 @@ createPdf = (date) => {
 
     pdfDoc.end();
 }
-createPdf();
 module.exports = { createPdf }

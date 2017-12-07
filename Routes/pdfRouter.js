@@ -29,6 +29,8 @@ router.post('/postPdf/', (req,res) => {
     var customerZip = req.body.customerOrgZip
     var customerCity = req.body.customerOrgCity
 
+    var description = req.body.description
+
     var salesPersonName = req.body.companyName
     var companyContactName = req.body.contactPerson
     var companyEmail = req.body.email
@@ -42,8 +44,8 @@ router.post('/postPdf/', (req,res) => {
     webHouse: navn, concatkperson, email, phone
     produkt: navn, beskrivelse, price. totalpris 
     */
-    console.log('req', req.body)
+    //console.log('req', req.body)
     createPdf(date, companyName, customerFirstName, customerLastName, customerAdress, 
-        customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice );
+        customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description );
     res.send('kuku');  
 })
