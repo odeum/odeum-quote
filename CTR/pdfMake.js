@@ -41,13 +41,16 @@ createPdf = (date) => {
 
             { text: `Aalborg, 12/07/2017`, alignment: 'right' },
 
-            { text: 'Titel på tilbud', fontSize: 20, margin: [20, 80, 0, 20] },
-            { text: 'The domestic cat[1][5] (Felis silvestris catus or Felis catus) is a small, typically furry, carnivorous mammal. They are often called house cats when kept as indoor pets or simply cats when there is no need to distinguish them from other felids and felines.', margin: [20, 5, 0, 20] },
+            { text: 'Titel på tilbud', fontSize: 20, margin: [20, 80, 0, 10], bold: true },
+            { text: 'The domestic cat[1][5] (Felis silvestris catus or Felis catus) is a small, typically furry, carnivorous mammal. They are often called house cats when kept as indoor pets or simply cats when there is no need to distinguish them from other felids and felines.', margin: [20, 0, 0, 20] },
 
-            { text: 'Webhouse ApS', absolutePosition: { x: 65, y: 660 } },
-            { text: 'Christian Broberg', absolutePosition: { x: 65, y: 675 } },
+            { text: 'Med venlig hilsen', absolutePosition: { x: 65, y: 645 } },
+            { text: 'Webhouse ApS', absolutePosition: { x: 65, y: 660 }, bold: true },
+            { text: 'Christian Broberg', absolutePosition: { x: 65, y: 675 }, bold: true },
             { text: 'Kong Christians Alle 37', absolutePosition: { x: 65, y: 690 } },
             { text: '9000 Aalborg', absolutePosition: { x: 65, y: 705 }, pageBreak: 'after' },
+
+            { text: 'Produkt oversigt', fontSize: 20, margin: [0, 80, 0, 20], bold: true },
 
             {
                 //The table
@@ -60,9 +63,8 @@ createPdf = (date) => {
                     widths: ['*', '*', '*'],
 
                     body: [
-                        ['Produkt', 'Beskrivelse af produkt', 'Pris'],
-                        ['Value 1', 'Value 2', 'Value 3'],
-                        ['val 1', 'Val 2', 'Val 3']
+                        [{ text: 'Produkt', bold: true }, { text: 'Beskrivelse af produkt', bold: true }, { text: 'Pris', alignment: 'right', bold: true }],
+                        ['Value 1', 'Value 2', { text: 'Value 3', alignment: 'right' }]
                     ]
                 },
                 styles: {
@@ -81,5 +83,5 @@ createPdf = (date) => {
 
     pdfDoc.end();
 }
-
+createPdf();
 module.exports = { createPdf }
