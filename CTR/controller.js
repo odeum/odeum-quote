@@ -20,7 +20,7 @@ var config = require('../config')
 
 const mailer = require('nodemailer');
 module.exports = function sendMail(fileName, customerEmail){
-    console.log('testes')
+    console.log('ctr');
     var smtpTransport = mailer.createTransport({
         service: "Gmail",
         auth: {
@@ -38,7 +38,7 @@ module.exports = function sendMail(fileName, customerEmail){
         attachments: [
              {   // stream as an attachment
                 filename: 'kuku',
-                path: `./pdfs/${fileName}.pdf`
+                path: `./pdf/${fileName}.pdf`
             }
         ]
     }

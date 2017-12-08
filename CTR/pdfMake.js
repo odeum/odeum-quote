@@ -1,6 +1,7 @@
 var pdfMake = require('pdfmake');
 var fs = require('fs');
 var image = require('../img/data')
+
 var fonts = {
     Roboto: {
         normal: './fonts/Roboto-Regular.ttf',
@@ -10,14 +11,18 @@ var fonts = {
     }
 };
 
-const numberWithCommas = (x) => {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
+// const numberWithCommas = (x) => {
+//     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+//   }
+ convertPriceToEu = (number) => {
+    var newConvertPrice = Number(number).toLocaleString("es-ES", { minimumFractionDigits: 2 });
+    return newConvertPrice; 
+}
 
 var printer = new pdfMake(fonts);
 
 createPdf = (date, companyName, customerFirstName, customerLastName, customerAdress,
-    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) => {
+    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description, callback) => {
     var title
     var description
     description.map((item) => {
@@ -33,7 +38,7 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
     bodyData.push(bodyDataHeader);
     products.map((item) => {
         var dataRow= [];
-        var newPrice = numberWithCommas(item.price)
+        var newPrice = convertPriceToEu(item.price)
         console.log(item)
         dataRow.push(item.name);
         dataRow.push(item.description);
@@ -104,10 +109,12 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
     };
 
     var pdfDoc = printer.createPdfKitDocument(pdfStyle);
-    pdfDoc.pipe(fs.createWriteStream('basics.pdf')).on('finish', function () {
+    pdfDoc.pipe(fs.createWriteStream(`./pdf/${title}.pdf`)).on('finish', function () {
         //success
+        return callback
     });
 
     pdfDoc.end();
+    
 }
 module.exports = { createPdf }
