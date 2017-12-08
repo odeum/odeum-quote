@@ -21,8 +21,8 @@ var fonts = {
 
 var printer = new pdfMake(fonts);
 
-createPdf = (date, companyName, customerFirstName, customerLastName, customerAdress,
-    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description, callback) => {
+createPdf = (date, companyName, customerEmail, customerFirstName, customerLastName, customerAdress,
+    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) => {
     var title
     var description
     description.map((item) => {
@@ -45,7 +45,7 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
         dataRow.push({text: newPrice, alignment: 'right'});
         bodyData.push(dataRow)
     })
-    //bodyData.push(['Samlet pris', '', ({text: totalPrice, alignment: 'right'})])
+    bodyData.push(['Samlet pris', '', ({text: totalPrice, alignment: 'right'})])
     console.log(bodyData)
     
     var pdfStyle = {
@@ -71,7 +71,7 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
             { text: `${companyName}`, margin: [20, 30, 0, 0] },
             { text: `${customerFirstName}` + `${customerLastName}`, margin: [20, 0, 0, 0] },
             { text: `${customerAdress}`, margin: [20, 0, 0, 0] },
-            { text: `${customerZip}` + `${customerCity}`, margin: [20, 0, 0, 0] },
+            { text: `${customerZip}` + ' ' + `${customerCity}`, margin: [20, 0, 0, 0] },
 
             { text: `Aalborg, ${date}`, alignment: 'right' },
 
@@ -81,8 +81,8 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
             { text: 'Med venlig hilsen', absolutePosition: { x: 65, y: 645 } },
             { text: `${salesPersonName}`, absolutePosition: { x: 65, y: 660 }, bold: true },
             { text: `${companyContactName}`, absolutePosition: { x: 65, y: 675 }, bold: true },
-            { text: `${companyEmail}`, absolutePosition: { x: 65, y: 690 } },
-            { text: `${companyPhone}`, absolutePosition: { x: 65, y: 705 }, pageBreak: 'after' },
+            { text: `Email: ${companyEmail}`, absolutePosition: { x: 65, y: 690 } },
+            { text: `Telefon: ${companyPhone}`, absolutePosition: { x: 65, y: 705 }, pageBreak: 'after' },
 
             { text: 'Produkt oversigt', fontSize: 20, margin: [0, 80, 0, 20], bold: true },
 
@@ -111,7 +111,6 @@ createPdf = (date, companyName, customerFirstName, customerLastName, customerAdr
     var pdfDoc = printer.createPdfKitDocument(pdfStyle);
     pdfDoc.pipe(fs.createWriteStream(`./pdf/${title}.pdf`)).on('finish', function () {
         //success
-        return callback
     });
 
     pdfDoc.end();

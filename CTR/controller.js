@@ -31,13 +31,15 @@ module.exports = function sendMail(fileName, customerEmail){
 
     var mail = {
         from: config.mail.mail,
-        to: customerEmail,
-        subject: "Send Email Using Node.js",
-        text: "Node.js New world for me",
-        html: "<b>Node.js New world for me</b>",
+        //Setting default Email
+        to: 'quote@odeumcode.com',
+        subject: "Tilbud fra WebHouse ApS",
+        text: "Tilbud er vedlagt",
+        html: "<b>Tilbud er vedlagt</b>",
         attachments: [
              {   // stream as an attachment
-                filename: 'kuku',
+                filename: 'Tilbud.pdf',
+                contentType: 'application/pdf',
                 path: `./pdf/${fileName}.pdf`
             }
         ]

@@ -15,6 +15,7 @@ router.post('/post/:name/:email', (req, res) => {
     var date = req.body.date
     var companyName = req.body.customerName
     var customerFirstName = req.body.customerContactFirstName
+    var customerEmail = req.body.customerEmail
     var customerLastName = req.body.customerContactLastName
     var customerAdress = req.body.customerOrgAddress
     var customerZip = req.body.customerOrgZip
@@ -29,10 +30,10 @@ router.post('/post/:name/:email', (req, res) => {
     console.log('router')
     var products = req.body.product
     var totalPrice = req.body.totalPrice
-        createPdf(date, companyName, customerFirstName, customerLastName, customerAdress, 
-            customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description, function(){
+        createPdf(date, companyName, customerEmail, customerFirstName, customerLastName, customerAdress, 
+            customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) 
                 console.log('tesyt')
-            sendMail(req.params.name, req.params.email)})
+            sendMail(req.params.name, req.params.email)
 
     res.send(pdf);
 })
