@@ -69,7 +69,7 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
 
         content: [
             { text: `${companyName}`, margin: [20, 30, 0, 0] },
-            { text: `${customerFirstName}` + `${customerLastName}`, margin: [20, 0, 0, 0] },
+            { text: `${customerFirstName}` + ' ' + `${customerLastName}`, margin: [20, 0, 0, 0] },
             { text: `${customerAdress}`, margin: [20, 0, 0, 0] },
             { text: `${customerZip}` + ' ' + `${customerCity}`, margin: [20, 0, 0, 0] },
 
