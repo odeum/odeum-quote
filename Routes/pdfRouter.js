@@ -2,10 +2,7 @@
 var express = require("express");
 var router = express.Router();
 var sendMail = require('../CTR/controller')
-var pdf = require('html-pdf');
-var options = { format: 'text/html'}
-var {createPdf} = require('../CTR/pdfMake')
-var {createPdf2} = require('../CTR/pdfKit')
+var { createPdf } = require('../CTR/pdfMake')
 
 
 
@@ -27,19 +24,19 @@ router.post('/post/:name/:email', (req, res) => {
     var companyContactName = req.body.contactPerson
     var companyEmail = req.body.email
     var companyPhone = req.body.phone
-    console.log('router')
     var products = req.body.product
     var totalPrice = req.body.totalPrice
-        createPdf(date, companyName, customerEmail, customerFirstName, customerLastName, customerAdress, 
-            customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) 
-                console.log('tesyt')
+    createPdf(date, companyName, customerEmail, customerFirstName, customerLastName, customerAdress,
+        customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description, function(){
             sendMail(req.params.name, req.params.email)
+        })
 
-    res.send(pdf);
+
+    res.send('der er sent en pdf');
 })
 
 
-router.post('/postPdf/', (req,res) => {
+router.post('/postPdf/', (req, res) => {
     var date = req.body.date
     var companyName = req.body.customerName
     var customerFirstName = req.body.customerContactFirstName
@@ -64,7 +61,7 @@ router.post('/postPdf/', (req,res) => {
     produkt: navn, beskrivelse, price. totalpris 
     */
     //console.log('req', req.body)
-    createPdf(date, companyName, customerFirstName, customerLastName, customerAdress, 
-        customerZip,customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description );
-    res.send('kuku');  
+    createPdf(date, companyName, customerFirstName, customerLastName, customerAdress,
+        customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description);
+    res.send('kuku');
 })

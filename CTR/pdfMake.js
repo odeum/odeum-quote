@@ -22,7 +22,7 @@ var fonts = {
 var printer = new pdfMake(fonts);
 
 createPdf = (date, companyName, customerEmail, customerFirstName, customerLastName, customerAdress,
-    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description) => {
+    customerZip, customerCity, salesPersonName, companyContactName, companyEmail, companyPhone, products, totalPrice, description, callback) => {
     var title
     var description
     description.map((item) => {
@@ -113,7 +113,7 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
         //success
     });
 
-    pdfDoc.end();
+    callback(pdfDoc.end());
     
 }
 module.exports = { createPdf }
