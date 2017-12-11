@@ -49,7 +49,7 @@ module.exports = function sendMail(fileName, customerEmail){
         if(error){
             console.log(error);
         }else{
-            console.log("Message sent: " + response.message);
+            console.log("Message sent: ");
         }
     
         smtpTransport.close();
