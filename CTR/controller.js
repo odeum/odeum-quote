@@ -1,23 +1,5 @@
 var config = require('../config')
 
-/*module.exports = function calaculateYearlyPrice(products, callback) {
-    //console.log(products)
-    var tempPrice = 0
-    for (var i = 0; i < products.length; i++) {
-        if (products[i].subscription === 'yearly') {
-            tempPrice += products[i].price;
-        }
-        if (products[i].subscription === 'monthly') {
-            tempPrice += products[i].price * 12;
-        }
-        if (products[i].subscription === 'quaterly') {
-            tempPrice += products[i].price * 4;
-        }
-    }
-    callback(tempPrice);
-}*/ 
-
-
 const mailer = require('nodemailer');
 module.exports = function sendMail(fileName, customerEmail){
     console.log('ctr');
