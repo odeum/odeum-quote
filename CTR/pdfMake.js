@@ -98,12 +98,8 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
                 layout: 'lightHorizontalLines',
                 style: 'tableExample',
                 table: {
-                    // headers are automatically repeated if the table spans over multiple pages
-                    // you can declare how many rows should be treated as headers
                     headerRows: 1,
-                    //The '*' sets the columns to an equal size
                     widths: ['*', '*', '*'],
-                    //The data for the table
                     body: bodyData
 
                 },
@@ -126,16 +122,3 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
 
 }
 module.exports = { createPdf }
-
-
-///////////
-
-createPdf = (description, callback) => {
-    var title
-    var description
-    description.map((item) => {
-        return (title = item.title,
-            description = item.description
-        )
-    })
-}
