@@ -1,7 +1,7 @@
 
 var express = require("express");
 var router = express.Router();
-var sendMail = require('../CTR/controller')
+var sendMail = require('../CTR/mail')
 var { createPdf } = require('../CTR/pdfMake')
 
 module.exports = router;
