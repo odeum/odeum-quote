@@ -39,14 +39,12 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
     products.map((item) => {
         var dataRow= [];
         var newPrice = convertPriceToEu(item.price)
-        console.log(item)
         dataRow.push(item.name);
         dataRow.push(item.description);
         dataRow.push({text: newPrice, alignment: 'right'});
         bodyData.push(dataRow)
     })
     bodyData.push(['Samlet pris', '', ({text: totalPrice, alignment: 'right'})])
-    console.log(bodyData)
     
     var pdfStyle = {
         header: {

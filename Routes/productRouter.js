@@ -25,7 +25,7 @@ router.post('/post', (req, res) => {
   });
 
 router.get('FindByName', (req, res) => {
-    Product.findOne(req.body, function(err, obj) {console.log(obj);}).then((product)=>{
+    Product.findOne(req.body).then((product)=>{
         res.send({product});
     }, (e) => {
         res.status(400).send(e);
