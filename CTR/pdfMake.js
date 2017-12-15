@@ -32,9 +32,6 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
 
     //The table data
     var bodyData = []
-    var productName
-    var productDescription
-    var productPrice
 
     bodyDataHeader = [{ text: 'Produkt', bold: true }, { text: 'Beskrivelse af produkt', bold: true }, { text: 'Pris', alignment: 'right', bold: true }];
     bodyData.push(bodyDataHeader);
@@ -114,9 +111,7 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
 
     //Creates the PDF
     var pdfDoc = printer.createPdfKitDocument(pdfStyle);
-    pdfDoc.pipe(fs.createWriteStream(`./pdf/${title}.pdf`)).on('finish', function () {
-        //success
-    });
+    pdfDoc.pipe(fs.createWriteStream(`./pdf/${title}.pdf`))
 
     callback(pdfDoc.end());
 
