@@ -1,3 +1,5 @@
+
+
 var pdfMake = require('pdfmake');
 var fs = require('fs');
 var image = require('../img/data')
@@ -112,8 +114,7 @@ createPdf = (date, companyName, customerEmail, customerFirstName, customerLastNa
     //Creates the PDF
     var pdfDoc = printer.createPdfKitDocument(pdfStyle);
     pdfDoc.pipe(fs.createWriteStream(`./pdf/${title}.pdf`))
-
-    callback(pdfDoc.end());
-
+    //setImmediate(callback(pdfDoc.end()));
+    callback(pdfDoc.end())
 }
 module.exports = { createPdf }
