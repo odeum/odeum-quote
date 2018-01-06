@@ -8,7 +8,7 @@ var should = chai.should();
 chai.use(chaiHttp);
 
 describe('/Get Product', () => {
-    it('it should GET all produckts', (done) => {
+    it('it should GET all products', (done) => {
         chai.request('http://localhost:8080/')
         .get('api/product/products')
         .end((err, res) => {
@@ -20,7 +20,7 @@ describe('/Get Product', () => {
     })
 })
 
-describe('/Qoute', () => {
+describe('/Quote', () => {
     after(() => {
         mongoose.mongoose.connection.db.dropCollection('Quotation')
     })
