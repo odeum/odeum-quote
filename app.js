@@ -2,11 +2,11 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
-var { mongoose } = require('./MongoDb/connection');
 var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
+var { mongoose } = require('./MongoDb/connection');
 
 
 const port = process.env.PORT || 8080;
