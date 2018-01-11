@@ -8,7 +8,8 @@ var quotationRoute = require('./Routes/quotationRouter');
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
 
-const port = 8080;
+
+const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
