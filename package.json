@@ -7,6 +7,9 @@
     "start": "set NODE_ENV=QuoteDB && node app.js",
     "test": "set NODE_ENV=test && mocha --timeout 10000"
   },
+  "engines": {
+    "node": "8.9.4"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
