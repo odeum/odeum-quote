@@ -6,8 +6,9 @@ var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
- require('./MongoDb/connection');
+var {mongoose} = require('./MongoDb/connection');
 
+mongoose = process.env.MONGOLAB_URI; 
 
 const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
