@@ -6,7 +6,7 @@ var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
-var { mongoose } = require('./MongoDb/connection');
+//var { mongoose } = require('./MongoDb/connection');
 
 
 const port = process.env.PORT || 8080;
@@ -29,7 +29,10 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+app.get('/', (request, response) => {
+  response.send('hello')
 
+})
 app.use('/api/quotation/', quotationRoute);
 app.use('/api/product/', productRoute);
 app.use('/api/pdf/', pdfRoute);
