@@ -1,4 +1,3 @@
-
 module.exports= {
     keys: {
         userName:'franka',
@@ -11,4 +10,3 @@ module.exports= {
         password: 'quote123'
     }
 }
-

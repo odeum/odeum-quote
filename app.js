@@ -2,13 +2,15 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors')
-var { mongoose } = require('./MongoDb/connection');
 var productRoute = require('./Routes/productRouter');
 var quotationRoute = require('./Routes/quotationRouter'); 
 var salespersonRoute = require('./Routes/salesPersonRouter'); 
 var pdfRoute = require('./Routes/pdfRouter')
+var {mongoose} = require('./MongoDb/connection');
 
-const port = 8080;
+mongoose = process.env.MONGOLAB_URI; 
+
+const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 
 app.use(function (req, res, next) {
@@ -28,7 +30,10 @@ app.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
+app.get('/', (request, response) => {
+  response.send('hello1')
 
+})
 app.use('/api/quotation/', quotationRoute);
 app.use('/api/product/', productRoute);
 app.use('/api/pdf/', pdfRoute);
