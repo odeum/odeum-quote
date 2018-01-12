@@ -4,7 +4,7 @@ const mailer = require('nodemailer');
 module.exports = function sendMail(fileName, customerEmail){
     console.log('ctr');
     var smtpTransport = mailer.createTransport({
-        service: config.service.service,
+        service: config.mail.service,
         auth: {
             user: config.mail.mail, // generated ethereal user
             pass: config.mail.password  // generated ethereal password
